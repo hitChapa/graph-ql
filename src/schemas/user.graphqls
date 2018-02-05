@@ -1,0 +1,29 @@
+
+enum Gender {
+    MALE
+    FEMALE
+}
+
+type Artwork {
+    src: String!
+    height: Int
+    width: Int
+    type: String
+}
+
+type User {
+    address: String!
+    artwork: [Artwork]!
+    city: String
+    emailId: String
+    gender: Gender
+    id: Int!
+    mobileNumber: String
+    name: String
+    zipcode: String
+}
+
+
+type Query {
+    user: User!
+}

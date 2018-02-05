@@ -1,0 +1,57 @@
+{
+  "name": "GQL",
+  "private": false,
+  "scripts": {
+    "lint": "yarn tsfiles | xargs tslint",
+    "lint:diff": "git diff --cached --name-only | grep '.ts$' | xargs tslint",
+    "lint:diff:fix": "git diff --cached --name-only | grep '.ts$' | xargs tslint --fix",
+    "lint:fix": "yarn tsfiles | xargs tslint --fix",
+    "postinstall": "tsc",
+    "prettier": "yarn tsfiles | xargs prettier --print-width 80 --single-quote --no-semi --no-bracket-spacing --write",
+    "start": "nodemon server.js",
+    "tsfiles": "git ls-files | grep '.ts$'",
+    "test": "mocha src --recursive"
+  },
+  "dependencies": {
+    "apollo-server-express": "^1.0.5",
+    "axios": "^0.17.1",
+    "body-parser": "^1.17.2",
+    "config": "^1.26.1",
+    "cors": "^2.8.4",
+    "express": "^4.15.3",
+    "graphql": "^0.10.5",
+    "graphql-tools": "^1.1.0",
+    "merge-graphql-schemas": "^1.1.1",
+    "ramda": "^0.24.1",
+    "request": "^2.81.0",
+    "request-promise-native": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/chai": "^4.0.3",
+    "@types/mocha": "^2.2.41",
+    "@types/ramda": "^0.24.7",
+    "@types/request-promise-native": "^1.0.6",
+    "chai": "^4.1.1",
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog": "^2.0.0",
+    "faker": "^4.1.0",
+    "ghooks": "^2.0.0",
+    "mocha": "^3.5.0",
+    "nodemon": "^1.14.12",
+    "prettier": "^1.5.3",
+    "sinon": "^4.1.2",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.5.0",
+    "typescript": "^2.4.2",
+    "validate-commit-msg": "^2.13.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    },
+    "ghooks": {
+      "commit-msg": "validate-commit-msg"
+    }
+  }
+}

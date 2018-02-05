@@ -1,0 +1,10 @@
+sudo: false
+language: node_js
+node_js:
+- stable
+cache:
+  yarn: true
+before_script:
+- yarn lint
+- yarn test
+- git ls-files | grep '.ts$' | xargs node_modules/.bin/prettier --list-different --print-width 80 --single-quote --no-semi --no-bracket-spacing
