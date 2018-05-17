@@ -33,3 +33,8 @@ interface Config {
   port: number
   api: string
 }
+
+declare module 'ramda' {
+  const R: any
+  export = R
+}

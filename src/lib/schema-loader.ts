@@ -1,3 +1,4 @@
+///<reference path="../resolvers/user.ts"/>
 /**
  * Created by hitesh.c on 18/11/17.
  */

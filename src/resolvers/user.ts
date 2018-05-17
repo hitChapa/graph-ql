@@ -1,55 +1,48 @@
+import * as DataLoader from 'dataloader'
 import * as R from 'ramda'
-import {HttpIO} from '../lib/request'
 import {mergeAPIResp, mergeParentArg} from '../lib/utils'
+import {accountJSON} from './account'
 
-type UserIO = {HTTP: HttpIO}
+export const createParser = R.converge(mergeAPIResp, [
+  mergeParentArg,
+  R.compose(R.path(['user', 'UserInfo']), R.nthArg(1))
+])
 
-interface UserArgs {}
+export const getParsedUserResp = (args, request) => {
+  return request.loader.userLoader
+    .load(JSON.stringify(args))
+    .then(createParser(args))
+}
 
-/**
- * Used to map converted api data
- */
-export const User = R.applySpec({
-  zipcode: R.prop('Zipcode'),
-  address: R.prop('Address'),
-  emailId: R.prop('EmailId'),
-  id: R.prop('UserId'),
-  mobileNumber: R.prop('MobileNum'),
-  name: R.prop('UserFullName'),
-  city: R.prop('City'),
-  gender: R.ifElse(
-    R.compose(Boolean, R.prop('Gender')),
-    R.compose(R.toUpper, R.prop('Gender')),
-    R.always(null)
+export const userJson = {
+  zipcode: R.composeP(R.tap(console.log), R.prop('Zipcode'), R.tap(console.log), getParsedUserResp),
+  address: R.composeP(R.prop('Address'), getParsedUserResp),
+  emailId: R.composeP(R.prop('EmailId'), getParsedUserResp),
+  id: R.composeP(R.prop('UserId'), getParsedUserResp),
+  mobileNumber: R.composeP(R.prop('MobileNum'), getParsedUserResp),
+  name: R.composeP(R.prop('UserFullName'), getParsedUserResp),
+  city: R.composeP(R.prop('City'), getParsedUserResp),
+  gender: R.composeP(
+    R.ifElse(
+      R.compose(Boolean, R.prop('Gender')),
+      R.compose(R.toUpper, R.prop('Gender')),
+      R.always(null)
+    ),
+    getParsedUserResp
+  ),
+  account: accountJSON
+}
+
+export const userLoader = (io, request) =>
+  new DataLoader(
+    async args =>
+      await args.map(arg =>
+        io.HTTP.post(
+          '/v2/5a748f082d0000890bfe1058',
+          R.merge({service: 'TOUR'}, request.headers),
+          JSON.parse(arg as any)
+        )
+      )
   )
-})
 
-/**
- * Used to convert an api response
- */
-export const createParser =
-  R.converge(R.compose(User, mergeAPIResp), [
-    mergeParentArg,
-    R.compose(R.path(['user', 'UserInfo']), R.nthArg(1))
-  ])
-
-
-/**
- * Used to fetch data from API
- */
-export const fetchUser = R.curry(
-  (io: UserIO, args: UserArgs, request: Request) =>
-    io.HTTP.post('/v2/5a748f082d0000890bfe1058', request.headers, args)
-)
-
-/**
- * User Resolver,
- * 1) Fetch User data from API
- * 2) Convert API response in required format
- * 3) Map converted response and return output
- */
-export const userResolver = (io: UserIO) => (
-  current: Object,
-  args: Object,
-  request: Request
-) => fetchUser(io, args, request).then(createParser(args))
+export const userResolver = R.applySpec(userJson)

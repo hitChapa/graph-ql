@@ -1,34 +1,21 @@
 import {assert} from 'chai'
-import * as sinon from 'sinon'
-import {createParser, fetchUser} from './user'
+import {createParser, userJson} from './user'
 
 const demoUserObj = require('./../fixtures/user')
 
 describe('User', () => {
   const args = {}
-  it('should test fetchUser', async () => {
-    const mockIO = {
-      HTTP: {
-        post: sinon.stub().returns(Promise.resolve(demoUserObj))
+  const mockedLoaders = {
+    loader: {
+      userLoader: {
+        load: () => Promise.resolve(demoUserObj)
       }
     }
-    const resp = await fetchUser(
-      mockIO,
-      args as any,
-      {headers: {'content-type': 'application/json', cookie: 'myCookie'}} as any
-    )
-    assert.deepEqual(resp, demoUserObj)
-    assert.ok(
-      mockIO.HTTP.post.calledWith(
-        '/v2/5a748f082d0000890bfe1058',
-        {'content-type': 'application/json', cookie: 'myCookie'},
-        args
-      )
-    )
-  })
+  }
 
-  it('should test user id', () => {
-    const actual = createParser(args)(demoUserObj).id
+  it('should test user id', async () => {
+    const actual = await userJson.zipcode(args, mockedLoaders)
+    console.log('actual = ', actual)
     assert.deepEqual(actual, 123123123)
   })
   it('should test user address', () => {
