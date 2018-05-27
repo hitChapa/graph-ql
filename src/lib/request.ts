@@ -1,5 +1,5 @@
 import axios from 'axios'
-import config = require('config')
+import * as config from 'config'
 import * as R from 'ramda'
 
 const post = (url: string, headers: Object, body) => {

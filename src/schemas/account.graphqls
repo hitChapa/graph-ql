@@ -3,8 +3,10 @@ type Account {
     IFSCCode: String!
     bankName: String
     zipcode: String
+    bank(bankId: Int!): Bank
 }
 
 type Query {
-    account: Account!
+    account(userId: Int): Account!
 }
+

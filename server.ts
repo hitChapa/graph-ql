@@ -8,10 +8,11 @@ import express = require('express')
 const cors = require('cors')
 import {graphiqlExpress, graphqlExpress} from 'apollo-server-express'
 import * as R from 'ramda'
+import {accountLoader} from './src/account/loader'
+import {bankLoader} from './src/bank/loader'
 import {http} from './src/lib/request'
 import {MockedSchema, Schema} from './src/lib/schema-loader'
-import {userAccountLoader} from './src/resolvers/account'
-import {userLoader} from './src/resolvers/user'
+import {userLoader} from './src/user/loader'
 
 const app = express()
 
@@ -54,8 +55,9 @@ app.use(cors({credentials: true, origin: true}))
 app.use(bodyParser.json())
 
 const createLoader = R.applySpec({
-  userAccountLoader: userAccountLoader,
-  userLoader: userLoader
+  userAccountLoader: accountLoader,
+  userLoader: userLoader,
+  bankLoader: bankLoader
 })
 
 app.use(

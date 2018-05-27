@@ -1,0 +1,11 @@
+
+type Bank @cacheControl(maxAge: 240){
+    id: Int!
+    name: String!
+    zipcode: String
+}
+
+
+type Query {
+    bank(id: Int!): Bank!
+}

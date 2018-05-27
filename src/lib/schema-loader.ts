@@ -6,9 +6,10 @@
 import {addMockFunctionsToSchema, makeExecutableSchema} from 'graphql-tools'
 import {fileLoader, mergeTypes} from 'merge-graphql-schemas'
 import * as path from 'path'
-import {userResolver} from '../resolvers/user'
+import {accountResolver} from '../account/resolver'
+import {bankResolver} from '../bank/resolver'
+import {userResolver} from '../user/resolver'
 import {MockMutations, MockQuery} from './mock-data'
-import {http} from './request'
 
 /**
  * The path for the schema files
@@ -26,7 +27,9 @@ export const TypeDefinition = mergeTypes(fileLoader(ROOT_SCHEMA_PATH))
  */
 export const resolvers = {
   Query: {
-    user: userResolver({HTTP: http})
+    user: userResolver,
+    account: accountResolver,
+    bank: bankResolver
   }
 }
 
