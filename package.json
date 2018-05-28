@@ -10,15 +10,18 @@
     "prettier": "yarn tsfiles | xargs prettier --print-width 80 --single-quote --no-semi --no-bracket-spacing --write",
     "start": "nodemon server.js",
     "tsfiles": "git ls-files | grep '.ts$'",
-    "test": "mocha src --recursive"
+    "test": "mocha src --recursive",
+    "cleanup": "find -E ./src/ -name '*.js*' -delete"
   },
   "dependencies": {
     "apollo-server-express": "^1.0.5",
-    "axios": "^0.17.1",
+    "axios": "^0.18.0",
     "body-parser": "^1.17.2",
     "config": "^1.26.1",
     "cors": "^2.8.4",
+    "dataloader": "^1.4.0",
     "express": "^4.15.3",
+    "fluture": "^8.0.2",
     "graphql": "^0.10.5",
     "graphql-tools": "^1.1.0",
     "merge-graphql-schemas": "^1.1.1",

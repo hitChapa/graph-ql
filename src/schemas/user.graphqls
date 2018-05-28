@@ -11,7 +11,7 @@ type Artwork {
     type: String
 }
 
-type User {
+type User @cacheControl(maxAge: 240){
     address: String!
     artwork: [Artwork]!
     city: String
@@ -21,9 +21,10 @@ type User {
     mobileNumber: String
     name: String
     zipcode: String
+    account(accountId: Int!): Account @cacheControl(maxAge: 600)
 }
 
 
 type Query {
-    user: User!
+    user(id: Int!): User!
 }

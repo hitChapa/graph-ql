@@ -1,0 +1,12 @@
+type Account {
+    accountNumber: String!
+    IFSCCode: String!
+    bankName: String
+    zipcode: String
+    bank(bankId: Int!): Bank
+}
+
+type Query {
+    account(userId: Int): Account!
+}
+
