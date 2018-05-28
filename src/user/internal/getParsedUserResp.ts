@@ -6,7 +6,7 @@ import {createUserParser} from '../parser'
 
 export const getParsedUserResp = R.curry(
   (parentData, parentArgs, parentRequest, parentInfo, args, request) =>
-    request.loader.userLoader
+    parentRequest.loader.userLoader
       .load(JSON.stringify(parentArgs))
       .then(createUserParser(parentArgs))
 )

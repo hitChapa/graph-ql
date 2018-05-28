@@ -6,7 +6,7 @@ import {createAccountParser} from '../parser'
 
 export const getParsedAccountResp = R.curry(
   (parentData, parentArgs, parentRequest, parentInfo, args, request) =>
-    request.loader.userAccountLoader
+    parentRequest.loader.userAccountLoader
       .load(JSON.stringify(parentArgs))
       .then(createAccountParser(parentArgs))
 )

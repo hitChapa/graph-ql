@@ -1,0 +1,17 @@
+{
+  "user": {
+    "UserInfo": {
+      "UserId": 123123123,
+      "EmailId": "hit.XXXX@gmail.com",
+      "UserFullName": "Hitesh Chapanera",
+      "Gender": "male",
+      "City": "",
+      "DateOfBirth": "1981-04-01",
+      "MobileNum": "9029XXXX76",
+      "Zipcode": "400XXX",
+      "Address": "Google LLC. attn: Joe Grier 1600 Amphitheatre Parkway Mountain View, CA 94043 USA",
+      "state": "Maharashtra",
+      "country": "INDIA"
+    }
+  }
+}
