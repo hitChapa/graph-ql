@@ -10,3 +10,4 @@ typings/
 schema1/
 *.log
 .idea/
+.idea
