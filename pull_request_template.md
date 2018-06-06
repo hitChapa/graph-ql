@@ -28,7 +28,7 @@
 - [ ] Validate Test cases
 
 
-## Guidlines
+## Guidelines
 
 - Unit tests
 - No Unused code
