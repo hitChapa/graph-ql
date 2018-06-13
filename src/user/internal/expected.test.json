@@ -1,0 +1,18 @@
+{
+  "data": {
+    "user": {
+      "id": 123123123,
+      "zipcode": "400XXX",
+      "address": "Google LLC. attn: Joe Grier 1600 Amphitheatre Parkway Mountain View, CA 94043 USA",
+      "emailId": "hit.XXXX@gmail.com",
+      "mobileNumber": "400XXX",
+      "name": "Hitesh Chapanera",
+      "city": "",
+      "gender": "MALE",
+      "account": {
+        "accountNumber": "ACC909983HHH",
+        "IFSCCode": "123HHH123"
+      }
+    }
+  }
+}

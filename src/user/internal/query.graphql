@@ -1,0 +1,16 @@
+query userQuery {
+    user(id: 123) {
+        id
+        zipcode
+        address
+        emailId
+        mobileNumber
+        name
+        city
+        gender
+        account(accountId: 123) {
+            accountNumber
+            IFSCCode
+        }
+    }
+}

@@ -11,6 +11,7 @@
     "start": "nodemon server.js",
     "tsfiles": "git ls-files | grep '.ts$'",
     "test": "mocha src --recursive",
+    "itest": "mocha src/**/*.integration.test.js --recursive",
     "cleanup": "find -E ./src/ -name '*.js*' -delete"
   },
   "dependencies": {

@@ -1,0 +1,5 @@
+{
+  "port": 9901,
+  "api": "http://localhost:9002",
+  "coOrdinatorPort": 9902
+}
