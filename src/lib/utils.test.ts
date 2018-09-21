@@ -1,14 +1,13 @@
-import {assert} from 'chai'
 import {mergeAPIResp, mergeParentArg} from './utils'
 
 describe('utils', () => {
-  it('should test mergeParentArg', () => {
+  test('should test mergeParentArg', () => {
     const actual = mergeParentArg({a: 1}, {b: 1})
     const expected = {b: 1, reqArgs: {a: 1}}
-    assert.deepEqual(actual, expected)
+    expect(actual).toEqual(expected)
   })
 
-  it('should test mergeAPIResp', () => {
+  test('should test mergeAPIResp', () => {
     const actual = mergeAPIResp({a: 1}, {b: 1})
     const expected = {
       _apiResponse: {
@@ -16,6 +15,6 @@ describe('utils', () => {
       },
       b: 1
     }
-    assert.deepEqual(actual, expected)
+    expect(actual).toEqual(expected)
   })
 })

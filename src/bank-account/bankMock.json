@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "response": {
+    "paygateways": [
+      {
+        "title": "NetBanking",
+        "options": [
+          {
+            "id": 37,
+            "PayType": "NetBanking",
+            "PayOption": "State Bank of India"
+          }
+        ]
+      },
+      {
+        "title": "NetBanking",
+        "options": [
+          {
+            "id": 8,
+            "PayType": "NetBanking",
+            "PayOption": "AXIS Bank"
+          }
+        ]
+      }
+    ]
+  }
+}
