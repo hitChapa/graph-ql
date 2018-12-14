@@ -11,7 +11,7 @@ type Artwork {
     type: String
 }
 
-type User @cacheControl(maxAge: 240){
+type User{
     address: String!
     artwork: [Artwork]!
     city: String
@@ -21,7 +21,7 @@ type User @cacheControl(maxAge: 240){
     mobileNumber: String
     name: String
     zipcode: String
-    account(accountId: Int!): Account @cacheControl(maxAge: 600)
+    account: Account
 }
 
 

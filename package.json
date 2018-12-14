@@ -9,6 +9,9 @@
     "postinstall": "tsc",
     "prettier": "yarn tsfiles | xargs prettier --print-width 80 --single-quote --no-semi --no-bracket-spacing --write",
     "start": "nodemon server.js",
+    "startUser": "nodemon user-server.js",
+    "startMain": "nodemon main-server.js",
+    "startAccount": "nodemon account-server.js",
     "tsfiles": "git ls-files | grep '.ts$'",
     "test": "mocha src --recursive",
     "cleanup": "find -E ./src/ -name '*.js*' -delete"
@@ -22,6 +25,7 @@
     "dataloader": "^1.4.0",
     "express": "^4.15.3",
     "fluture": "^8.0.2",
+    "gql-request": "^1.0.0",
     "graphql": "^0.10.5",
     "graphql-tools": "^1.1.0",
     "merge-graphql-schemas": "^1.1.1",

@@ -5,7 +5,6 @@ import {
   accountNumber,
   bankName,
   IFSCCode,
-  userBank,
   zipcode
 } from './internal/utils'
 
@@ -13,6 +12,5 @@ export const accountJson = {
   IFSCCode,
   bankName,
   zipcode,
-  accountNumber,
-  bank: userBank
+  accountNumber
 }

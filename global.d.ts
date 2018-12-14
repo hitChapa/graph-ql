@@ -24,6 +24,8 @@ declare module 'body-parser' {
 declare module 'merge-graphql-schemas' {
   const fileLoader: any
   const mergeTypes: any
+  const mergeSchemas: any
+  const mergeResolvers: any
 }
 
 /**

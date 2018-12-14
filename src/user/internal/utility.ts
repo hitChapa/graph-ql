@@ -1,9 +1,10 @@
 /**
  * Created by hitesh.c on 29/05/18.
  */
+// import {accountResolver} from '../../account/resolver'
+import {accountResolver} from 'gql-test-account/resolver'
+import {convertParser} from 'gql-utility'
 import * as R from 'ramda'
-import {accountResolver} from '../../account/resolver'
-import {convertParser} from '../../lib/utils'
 import {getParsedUserResp} from './getParsedUserResp'
 
 const getUser = convertParser(getParsedUserResp)

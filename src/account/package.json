@@ -1,0 +1,28 @@
+{
+  "name": "gql-test-account",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-express": "^1.0.5",
+    "config": "^3.0.0",
+    "cors": "^2.8.5",
+    "dataloader": "^1.4.0",
+    "express": "^4.16.4",
+    "gql-request": "^1.0.0",
+    "gql-utility": "^1.0.1",
+    "graphql": "^14.0.2",
+    "graphql-tools": "^4.0.3",
+    "merge-graphql-schemas": "^1.5.8",
+    "nodemon": "^1.18.7"
+  },
+  "devDependencies": {
+    "tslint": "^5.11.0",
+    "typescript": "^3.2.1"
+  }
+}
